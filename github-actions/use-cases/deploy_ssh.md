@@ -58,7 +58,7 @@ jobs:
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
     - name: connect and execute
-      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "mkdir -p /var/www/html"
+      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "echo 'hallo' > /var/www/html/test.hml"
     - name: synchronize 
       run: rsync -avz ./dist root@${{ secrets.SSH_HOST }}:/var/www/html/ 
     - name: cleanup
